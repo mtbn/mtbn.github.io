@@ -1,401 +1,848 @@
 <!DOCTYPE html>
-<html lang="EN">
-
+<html lang="en">
 <head>
-  <!-- Required meta tags-->
-  <meta charset="utf-8">
-  <!-- Title-->
-  <title>Mo Taban - Personal Portfolio</title>
-  <!-- Description-->
-  <meta name="description" content=" Portfolio">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-  <!-- Web fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-  <!-- CSS vendors-->
-  <link rel="stylesheet" href="css/bootstrap-custom.css">
-  <link rel="stylesheet" href="css/ionicons.min.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/simplebar.min.css">
-  <link rel="stylesheet" href="css/jquery.mb.YTPlayer.min.css">
-  <!-- Main CSS-->
-  <link rel="stylesheet" href="css/main.css">
-  <!-- CSS Color scheme-->
-  <link id="color-scheme" rel="stylesheet" href="css/colors/main-red.css">
-  <!-- Custom CSS (Add your custom CSS styles to this file)-->
-  <link rel="stylesheet" href="css/custom.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mo Taban</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F9F8F6;
+  --ink: #1C1C1A;
+  --soft: #5C5C58;
+  --faint: #E8E6E1;
+  --teal: #2A6B6B;
+  --teal-light: #EBF4F4;
+  --serif: 'Lora', Georgia, serif;
+  --sans: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 48px; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg);
+  border-bottom: 1px solid var(--faint);
+  opacity: 0; animation: rise 0.6s ease 0.1s forwards;
+}
+.nav-name { font-family: var(--serif); font-size: 17px; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 13px; font-weight: 400;
+  text-decoration: none; color: var(--soft);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  max-width: 760px; margin: 0 auto;
+  padding: 160px 48px 100px;
+  opacity: 0; animation: rise 0.8s ease 0.3s forwards;
+}
+.hero-greeting {
+  font-size: 13px; font-weight: 400; color: var(--teal);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 600; line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 28px;
+}
+.hero h1 em { font-style: italic; font-weight: 400; }
+.hero-intro {
+  font-size: 17px; line-height: 1.85; color: var(--soft);
+  max-width: 600px; margin-bottom: 48px;
+}
+.hero-intro strong { color: var(--ink); font-weight: 500; }
+.hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.pill {
+  padding: 10px 22px; font-size: 13px; font-weight: 400;
+  border-radius: 100px; text-decoration: none;
+  transition: all 0.2s; cursor: pointer; border: none;
+}
+.pill-solid { background: var(--ink); color: var(--bg); }
+.pill-solid:hover { background: var(--teal); }
+.pill-outline { border: 1px solid var(--faint); color: var(--soft); background: transparent; }
+.pill-outline:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ── PAGE LAYOUT ── */
+.page { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+
+.section-title {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 48px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--faint); }
+
+/* ── STORY BLOCKS ── */
+.story-block {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--faint);
+}
+.story-block:last-child { border-bottom: none; }
+
+.story-context {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--soft); margin-bottom: 16px;
+}
+.story-block h2 {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600; line-height: 1.2;
+  letter-spacing: -0.02em; margin-bottom: 24px;
+}
+.story-block h2 em { font-style: italic; font-weight: 400; }
+
+.story-body { font-size: 16px; line-height: 1.9; color: var(--soft); }
+.story-body p { margin-bottom: 18px; }
+.story-body p:last-child { margin-bottom: 0; }
+.story-body strong { color: var(--ink); font-weight: 500; }
+
+.callout {
+  margin: 32px 0; padding: 24px 28px;
+  background: var(--teal-light);
+  border-left: 3px solid var(--teal);
+  font-family: var(--serif); font-size: 18px;
+  font-style: italic; line-height: 1.65; color: var(--ink);
+}
+
+.stat-row {
+  display: flex; gap: 0; margin: 36px 0;
+  border: 1px solid var(--faint);
+  overflow: hidden; border-radius: 8px;
+}
+.stat-item {
+  flex: 1; padding: 20px 24px;
+  border-right: 1px solid var(--faint); text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item-num {
+  font-family: var(--serif); font-size: 30px; font-weight: 600;
+  letter-spacing: -0.02em; color: var(--teal); display: block;
+}
+.stat-item-label {
+  font-size: 11px; color: var(--soft);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-top: 4px; display: block;
+}
+
+.tech-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.chip {
+  font-size: 12px; padding: 5px 14px;
+  background: white; border: 1px solid var(--faint);
+  color: var(--soft); border-radius: 4px; transition: all 0.2s;
+}
+.chip:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── GALLERY ── */
+.gallery {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--faint);
+}
+.gallery-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--soft);
+  margin-bottom: 16px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.gallery-grid.count-1 { grid-template-columns: 1fr; }
+.gallery-grid.count-2 { grid-template-columns: 1fr 1fr; }
+.gallery-grid.count-4 { grid-template-columns: 1fr 1fr; }
+
+/* First item spans full width when there are 3 or 5+ items */
+.gallery-grid.count-3 .gallery-item:first-child,
+.gallery-grid.count-5 .gallery-item:first-child {
+  grid-column: span 3;
+}
+
+.gallery-item {
+  position: relative; overflow: hidden;
+  background: #E8E6E1;
+  border-radius: 4px;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+}
+.gallery-grid.count-1 .gallery-item { aspect-ratio: 16/9; }
+.gallery-grid.count-3 .gallery-item:first-child { aspect-ratio: 16/7; }
+.gallery-grid.count-5 .gallery-item:first-child { aspect-ratio: 16/7; }
+
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-item-overlay {
+  position: absolute; inset: 0;
+  background: rgba(28,28,26,0);
+  transition: background 0.3s;
+  display: flex; align-items: flex-end;
+  padding: 12px;
+}
+.gallery-item:hover .gallery-item-overlay { background: rgba(28,28,26,0.35); }
+.gallery-item-caption {
+  font-size: 11px; color: white;
+  opacity: 0; transform: translateY(6px);
+  transition: all 0.3s; letter-spacing: 0.04em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.gallery-item:hover .gallery-item-caption { opacity: 1; transform: none; }
+
+/* Placeholder state */
+.gallery-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; padding: 16px; text-align: center;
+  background: var(--faint);
+  border: 2px dashed #C8C6C0;
+  border-radius: 4px;
+  color: var(--soft);
+  cursor: default;
+  aspect-ratio: 4/3;
+  transition: border-color 0.2s, background 0.2s;
+}
+.gallery-placeholder:hover {
+  border-color: var(--teal);
+  background: var(--teal-light);
+}
+.ph-icon { font-size: 24px; opacity: 0.5; }
+.ph-type {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--teal); opacity: 0.8;
+}
+.ph-hint { font-size: 11px; color: var(--soft); opacity: 0.7; line-height: 1.4; }
+
+/* Upload hint bar */
+.gallery-upload-hint {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--teal-light);
+  border-radius: 4px;
+  font-size: 12px; color: var(--teal);
+  display: flex; align-items: center; gap: 8px;
+}
+.gallery-upload-hint code {
+  font-family: monospace; font-size: 11px;
+  background: rgba(42,107,107,0.12);
+  padding: 2px 6px; border-radius: 3px;
+}
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,10,8,0.92);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-inner {
+  position: relative; max-width: 90vw; max-height: 90vh;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.lightbox-img {
+  max-width: 90vw; max-height: 80vh;
+  object-fit: contain; border-radius: 4px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+.lightbox-caption {
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em; text-align: center;
+}
+.lightbox-close {
+  position: absolute; top: -44px; right: 0;
+  font-size: 28px; color: rgba(255,255,255,0.5);
+  cursor: pointer; line-height: 1;
+  transition: color 0.2s;
+  background: none; border: none;
+}
+.lightbox-close:hover { color: white; }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 28px; color: rgba(255,255,255,0.4);
+  cursor: pointer; background: none; border: none;
+  transition: color 0.2s; padding: 12px;
+  user-select: none;
+}
+.lightbox-nav:hover { color: white; }
+.lightbox-prev { left: -60px; }
+.lightbox-next { right: -60px; }
+
+/* ── SKILLS ── */
+.skills-section { padding: 72px 0; }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.skill-col h3 {
+  font-family: var(--serif); font-size: 20px; font-weight: 600;
+  letter-spacing: -0.01em; margin-bottom: 16px;
+}
+.skill-col ul { list-style: none; }
+.skill-col ul li {
+  font-size: 14px; color: var(--soft); padding: 9px 0;
+  border-bottom: 1px solid var(--faint);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.skill-col ul li:last-child { border-bottom: none; }
+.skill-col ul li span { font-size: 11px; color: var(--teal); letter-spacing: 0.04em; }
+
+/* ── ABOUT ── */
+.about-section { padding: 72px 0; border-bottom: 1px solid var(--faint); }
+.about-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 600; line-height: 1.2;
+  letter-spacing: -0.02em; margin-bottom: 28px;
+}
+.about-section h2 em { font-style: italic; font-weight: 400; }
+.about-text { font-size: 16px; line-height: 1.9; color: var(--soft); }
+.about-text p { margin-bottom: 18px; }
+.about-text strong { color: var(--ink); font-weight: 500; }
+.about-facts {
+  margin-top: 48px; display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.about-fact { padding: 20px 0; border-top: 2px solid var(--ink); }
+.about-fact-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--soft); margin-bottom: 8px;
+}
+.about-fact-val { font-family: var(--serif); font-size: 16px; line-height: 1.4; }
+
+/* ── CONTACT ── */
+.contact-section { padding: 72px 0 100px; }
+.contact-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 600; line-height: 1.2;
+  letter-spacing: -0.02em; margin-bottom: 16px;
+}
+.contact-section h2 em { font-style: italic; font-weight: 400; }
+.contact-section p { font-size: 16px; color: var(--soft); line-height: 1.8; max-width: 520px; margin-bottom: 40px; }
+.contact-list { display: flex; flex-direction: column; gap: 2px; max-width: 480px; }
+.contact-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 0; border-bottom: 1px solid var(--faint);
+  text-decoration: none; color: var(--ink); transition: all 0.2s;
+}
+.contact-row:hover { color: var(--teal); }
+.contact-row:hover .contact-arrow { transform: translateX(4px); }
+.contact-row-label { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
+.contact-row-val { font-size: 14px; }
+.contact-arrow { font-size: 16px; transition: transform 0.2s; }
+
+footer {
+  border-top: 1px solid var(--faint); padding: 24px 48px;
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--soft);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+.divider { border: none; border-top: 1px solid var(--faint); margin: 0; }
+
+@media (max-width: 700px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 120px 20px 72px; }
+  .page { padding: 0 20px; }
+  .stat-row { flex-direction: column; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--faint); }
+  .stat-item:last-child { border-bottom: none; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .about-facts { grid-template-columns: 1fr 1fr; }
+  .gallery-grid,
+  .gallery-grid.count-2,
+  .gallery-grid.count-3,
+  .gallery-grid.count-4,
+  .gallery-grid.count-5 { grid-template-columns: 1fr 1fr; }
+  .gallery-grid.count-3 .gallery-item:first-child,
+  .gallery-grid.count-5 .gallery-item:first-child { grid-column: span 2; }
+  .lightbox-prev { left: -36px; }
+  .lightbox-next { right: -36px; }
+  footer { flex-direction: column; gap: 8px; padding: 20px; }
+}
+</style>
 </head>
-
 <body>
-  <!-- Preloader-->
-  <div class="preloader">
-    <div class="preloader-block">
-      <div class="preloader-icon"><span class="loading-dot loading-dot-1"></span><span class="loading-dot loading-dot-2"></span><span class="loading-dot loading-dot-3"></span></div>
-    </div>
-  </div>
-  <div class="main-wrapper">
-    <!-- Sidebar-->
-    <header>
-      <nav class="navbar d-md-block d-lg-none fixed-top mobile-navbar"><button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#mobileNavbarSupportedContent" aria-controls="mobileNavbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="nav-btn">Menu</span></button>
-        <div class="collapse navbar-collapse order-1" id="mobileNavbarSupportedContent">
-          <ul class="navbar-nav mr-auto"></ul>
-        </div>
-      </nav>
-      <nav class="sidebar" data-simplebar>
-        <div class="sidebar-header"><a href="#home" data-scroll><img class="img-fluid sidebar-avatar" src="img/profile-avatar.jpg" alt="Profile avatar"></a><span class="sidebar-name">Mo Taban</span>
-        </div>
-        <div class="sidebar-menu">
-          <ul class="list-unstyled list-menu">
-            <li><a class="nav-link" href="#home-area" data-scroll>Home</a></li>
-            <li><a class="nav-link" href="#about-area" data-scroll>About Me</a></li>
-            <li><a class="nav-link" href="#skills-area" data-scroll>My Skills</a></li>
-            <li><a class="nav-link" href="#portfolio-area" data-scroll>Portfolio</a></li>
-            <li><a class="nav-link" href="#contact-area" data-scroll>Get in Touch</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <div class="sections-wrapper">
-      <!-- Sections-->
-      <!-- Home-->
-      <section class="home-area element-cover-bg" id="home-area" style="background-image:url(img/home.jpg)">
-        <div class="container h-100">
-          <div class="row h-100 align-items-center justify-content-center">
-            <div class="col-12 col-lg-8 home-content text-center">
-              <h1 class="home-name">Mo <span>Taban</span></h1>
-              <h4 class="cd-headline clip home-headline">Welcome To My Portfolio!<span class="cd-words-wrapper single-headline">
-            </div><a href="#about-area" data-scroll>
-              <div class="home-mouse">
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-      <!-- About-->
-      <section class="single-section about-area" id="about-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="section-heading">
-                <h2 class="section-title">About Me</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <!-- Picture part-->
-            <div class="col-12 col-lg-5 about-img"><img class="img-fluid img-thumbnail" src="img/about-img.jpg" alt="About Picture"></div>
-            <!-- Content part-->
-            <div class="col-12 col-lg-7 about-content">
-              <div class="content-block">
-                <h2 class="content-subtitle">Who am I?</h2>
-                <h6 class="content-title">I'm Mo Taban, Mechanical Engineering Student.</h6>
-                <div class="content-description">
-                  <p>I'm a 3rd year Mechanical Engineering student at the University of Toronto. My passion for learning has enabled me to grow my skills both inside and outside the classroom. I am the current Brakes Lead at the University of Toronto Formula SAE Racing Team, where I am responsible for the design, manufacturing and validation of the Brake and Throttle systems. Prior to becoming the Brakes Lead, I was a Senior Brake Design Member, but I also contributed to the manufacturing of the Aerodynamics and Electric Powertrain of our car.</p>
-                </div>
-                <a href="Mo Taban Resume.pdf" class="btn content-download button-main button-scheme" download> Download My Resume</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Skills-->
-      <section class="single-section alt-bg skills-area" id="skills-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="section-heading">
-                <h2 class="section-title">My Skills</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <!-- Single skill-->
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-skill">
-                <h4 class="skill-title">SolidWorks</h4><img class="img-fluid" alt="Item" src="img/CSWA.PNG">
-              </div>
-            </div>
-            <!-- Single skill-->
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-skill">
-                <h4 class="skill-title">Python</h4><img class="img-fluid" alt="Item" src="img/Python.PNG">
-              </div>
-            </div>
-            <!-- Single skill-->
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-skill">
-                <h4 class="skill-title">Ansys Mechanical</h4><img class="img-fluid" alt="Item" src="img/Ansys.png">
-              </div>
-            </div>
-            <!-- Single skill-->
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-skill mb-lg-0">
-                <h4 class="skill-title">MATLAB</h4><img class="img-fluid" alt="Item" src="img/Matlab.PNG">
-              </div>
-            </div>
-            <!-- Single skill-->
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-skill mb-md-0">
-                <h4 class="skill-title">3D Printing</h4><img class="img-fluid" alt="Item" src="img/Printing.PNG">
-              </div>
-            </div>
-            <!-- Single skill-->
-            <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-skill mb-0">
-                <h4 class="skill-title">Machining</h4><img class="img-fluid" alt="Item" src="img\Machining.png">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Portfolio-->
-      <section class="single-section portfolio-area" id="portfolio-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="section-heading">
-                <h2 class="section-title">Portfolio</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <!-- Filter nav-->
-            <div class="col-12">
-              <ul class="list-inline filter-control" role="group" aria-label="Filter Control">
-                <li class="list-inline-item tab-active" data-filter="*"></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Thumbnail list-->
-          <div class="portfolio-grid row">
-            <!-- Single item-->
-            <div class="single-item col-6 col-lg-4 design"><a class="portfolio-item" href="#item-1">
-                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/EBS Piston.png">
-                  <div class="item-content">
-                    <h6 class="content-title">Pneumatic Emergency Braking System</h6><span class="content-more">More Info</span>
-                  </div>
-                </div>
-              </a></div>
-            <!-- Single item-->
-            <div class="single-item col-6 col-lg-4 photos"><a class="portfolio-item" href="#item-2">
-                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/Pedal Tray Rendering.JPG">
-                  <div class="item-content">
-                    <h6 class="content-title">Adjustable Pedal Tray and Rail</h6><span class="content-more">More Info</span>
-                  </div>
-                </div>
-              </a></div>
-            <!-- Single item-->
-            <div class="single-item col-6 col-lg-4 design"><a class="portfolio-item" href="#item-3">
-                <div class="portfolio-wrapper"><img class="img-fluid" alt="Item" src="img/Rotor Temps.jpg">
-                  <div class="item-content">
-                    <h6 class="content-title">Brake Rotors</h6><span class="content-more">More Info</span>
-                  </div>
-                </div>
-              </a></div>
-            <!-- Single item-->
-            <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="#item-4">
-                <div class="portfolio-wrapper mb-lg-0"><img class="img-fluid" alt="Item" src="img/ASB Top.png">
-                  <div class="item-content">
-                    <h6 class="content-title">Autonomous System Brake V1</h6><span class="content-more">More Info</span>
-                  </div>
-                </div>
-              </a></div>
-            <!-- Single item-->
-            <div class="single-item col-6 col-lg-4 brand"><a class="portfolio-item" href="#item-5">
-                <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="img/Throttle Pedal.PNG">
-                  <div class="item-content">
-                    <h6 class="content-title">Throttle Pedal Redesign</h6><span class="content-more">More Info</span>
-                  </div>
-                </div>
-              </a></div>
-            <!-- Single item-->
-            <div class="single-item col-6 col-lg-4 photos"><a class="portfolio-item" href="#item-6">
-                <div class="portfolio-wrapper mb-0"><img class="img-fluid" alt="Item" src="img/Brake Matlab.png">
-                  <div class="item-content">
-                    <h6 class="content-title">Python and MATLAB Brake Pressure - Acceleration Sweep</h6><span class="content-more">More Info</span>
-                  </div>
-                </div>
-              </a></div>
-          </div>
-        </div>
-        <!-- Single lightbox-->
-        <div class="lightbox-wrapper" id="item-1">
-          <div class="f-basis-100">
-            <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-5">
-                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="img/EBS Piston.png"></div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="lightbox-content">
-                  <h3 class="content-title">Pneumatic Emergency Braking System</h3>
-                  <div class="content-description">
-                    <p>I designed a Hydraulic-Over-Pneumatic piston to actuate the brakes of the car in case of emergencies during autonomous driving. The design process involved determining the required bore size in order to achieve the desired brake line pressures. O-rings were selected based on Parker design guidelines. When power is disconnected, solenoid valves will open to apply pressure to the pneumatic input of the piston. This design has 50% greater braking performance compared to the previous generation design.</p>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Single lightbox-->
-        <div class="lightbox-wrapper" id="item-2">
-          <div class="f-basis-100">
-            <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-5">
-                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="img/Pedal Tray Rendering.JPG"><img class="img-fluid item-img" alt="Item" src="img/Pedal Tray Deformation.jpg"><img class="img-fluid item-img" alt="Item" src="img/Pedal Tray Full.JPG"></div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="lightbox-content">
-                  <h3 class="content-title">Adjustable Pedal Tray and Rail</h3>
-                  <div class="content-description">
-                    <p>Adjustable pedals are required in order to accommodate drivers of different sizes. The brake and throttle pedal trays were redesigned with custom rails in order to eliminate the compliance caused by the OEM Rails and Carriages. The structural performance of the design was evaluated using Ansys, and it was determined that the brake pedal tray deforms by 37% less under maximum load.</p>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Single lightbox-->
-        <div class="lightbox-wrapper" id="item-3">
-          <div class="f-basis-100">
-            <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-5">
-                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="img/Rotor Temps.jpg"><img class="img-fluid item-img" alt="Item" src="img/Rotor Safety Factor.jpg"><img class="img-fluid item-img" alt="Item" src="img/Peak Rotor Temperature.PNG"></div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="lightbox-content">
-                  <h3 class="content-title">Brake Rotors</h3>
-                  <div class="content-description">
-                    <p>The thermal and structural performance of our brake rotors was evaluated. The heat flux and convection coefficients were determined through calculations. These values were then used in Ansys to determine the temperature distribution across the rotor. The resulting thermal stresses were used as part of the structural simulation. The rotor has a minimum safety factor of 3.33 under maximum braking.</p>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Single lightbox-->
-        <div class="lightbox-wrapper" id="item-4">
-          <div class="f-basis-100">
-            <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-5">
-                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="img/ASB Top.png"><img class="img-fluid item-img" alt="Item" src="img/ASB ISO.png"><img class="img-fluid item-img" alt="Item" src="img/ASB in car.png"></div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="lightbox-content">
-                  <h3 class="content-title">Autonomous System Brake V1</h3>
-                  <div class="content-description">
-                    <p>The previous Brakes Lead and I designed, manufactured, and tested our first brake by wire prototype as part of the Autonomous System Brake development. This system was designed to be a system which can be easily added to the 2023 vehicle in order to test the driverless systems. It was created in a way that it could be quickly connected and disconnected from the existing manual brakes. While this system was not formally tested on the car, many of its components and design elements have been used for the current autonomous braking system. </p>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Single lightbox-->
-        <div class="lightbox-wrapper" id="item-5">
-          <div class="f-basis-100">
-            <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-5">
-                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="img/Throttle Pedal.PNG"><img class="img-fluid item-img" alt="Item" src="img/Throttle Spring.JPG"></div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="lightbox-content">
-                  <h3 class="content-title">Throttle Pedal Redesign</h3>
-                  <div class="content-description">
-                    <p>The throttle pedal was redesigned in order to enhance the driver comfort. This involved decreasing the pedal angle with respect to the floor. In order to achieve this, the torsion springs found in the previous design were replaced with compression springs. Because of this, the linear potentiometers which were previously used were replaced with rotary potentiometers. </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Single lightbox-->
-        <div class="lightbox-wrapper" id="item-6">
-          <div class="f-basis-100">
-            <div class="lightbox-close" data-modal-close><span class="close-btn"><span class="btn-line"></span></span></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-5">
-                <div class="lightbox-gallery owl-carousel owl-theme"><img class="img-fluid item-img" alt="Item" src="img/Brake Matlab.png" ></div>
-              </div>
-              <div class="col-12 col-lg-7">
-                <div class="lightbox-content">
-                  <h3 class="content-title">Python and MATLAB Brake Pressure - Acceleration Sweep</h3>
-                  <div class="content-description">
-                    <p>In order to better understand the impact which our front and rear brake pressures have on our deceleration, I created a Python program which determines the resulting deceleration for a large set of front and rear pressure values. The data was analyzed using MATLAB in order to create a 3D plot. This figure shows all possible deceleration values, given a combination of line pressures. The Program was created with checks that ensure the behavior of the model is representative of the vehicle and tire behaviors. </p>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Contact-->
-      <section class="single-section contact-area alt-bg" id="contact-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="section-heading">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="section-description">If you have any questions about my projects, or just want to chat, please reach out to me on my email or LinkedIn!</p>
-          </div>
-        </div>
-      </section>
-      <!-- Footer-->
-      <footer class="footer-area single-section">
-        <div class="container">
-          <div class="row contact-info">
-            <div class="col-12 col-sm-4">
-              <div class="single-info"><i class="info-icon icon ion-ios-globe"></i>
-                <p class="info-content"><a href= "http://linkedin.com/in/motaban/" > LinkedIn </a></p>
-              </div>
-            </div>
-            <div class="col-12 col-sm-4">
-              <div class="single-info"><i class="info-icon icon ion-md-send"></i>
-                <p class="info-content"><a href="mailto:mo.taban@mailnutoronto.ca">mo.taban@mail.utoronto.ca</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  </div>
-  <!-- Scripts-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/animatedModal.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/simplebar.min.js"></script>
-  <script src="js/jquery.mb.YTPlayer.min.js"></script>
-  <script src="js/particles.js"></script>
-  <script src="js/main.js"></script>
-  <!-- Custom JS (Add your custom JS scripts to this file)-->
-  <script src="js/custom.js"></script>
-</body>
 
+<nav>
+  <div class="nav-name">Mo Taban</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-greeting">Mechanical Engineer · Toronto, ON</div>
+  <h1>Hi, I'm Mo.<br>I build things that <em>actually work.</em></h1>
+  <p class="hero-intro">
+    I'm a final-year <strong>Mechanical Engineering student at the University of Toronto</strong> (Minor in Mechatronics) with a few years of real engineering experience — from PCB design and factory test rigs to autonomous vehicle systems and Formula SAE competition.
+  </p>
+  <div class="hero-links">
+    <a href="#work" class="pill pill-solid">See my work</a>
+    <a href="#contact" class="pill pill-outline">Get in touch</a>
+    <a href="#" class="pill pill-outline">Download resume</a>
+  </div>
+</div>
+
+<!-- ═══ WORK ═══ -->
+<div class="page" id="work">
+  <div class="section-title reveal">Work</div>
+
+  <!-- Consulting -->
+  <div class="story-block reveal">
+    <div class="story-context">Aston Dynamics Canada · Sep 2025 – Present</div>
+    <h2>Making the factory <em>smarter</em></h2>
+    <div class="story-body">
+      <p>After 16 months as an intern, Aston Dynamics asked me to stay on as an independent consultant — which meant taking on more open-ended problems with less hand-holding. The first big one: the factory was catching brake actuator defects too late in the process, and test cycles were slow and inconsistent.</p>
+      <p>I designed a dedicated test rig from the ground up. The goal was automated detection of manufacturing and assembly defects — the kind of issues that are cheap to catch early and expensive to miss. The rig cut overall test cycle time by <strong>30%</strong> while keeping full defect coverage. It's now part of the production line.</p>
+      <p>I also ran a material evaluation on thermal adhesives for one of their electronics assemblies. After a structured comparative study, I recommended a replacement that improved <strong>thermal conductivity by 65%</strong> — without compromising any mechanical or manufacturing constraints.</p>
+      <div class="callout">"The interesting problems aren't the ones where you already know the answer. They're the ones where the constraints are real and the tradeoffs actually matter."</div>
+      <p>Beyond my own deliverables, I've been running design reviews for new products and working with interns on component selection and manufacturability.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">30%</span><span class="stat-item-label">Test cycle reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">65%</span><span class="stat-item-label">Thermal conductivity gain</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">Mechanical Design</span>
+      <span class="chip">Thermal Analysis</span>
+      <span class="chip">Test Automation</span>
+      <span class="chip">DFM</span>
+      <span class="chip">Materials Evaluation</span>
+    </div>
+
+    <!-- Gallery: Consulting -->
+    <div class="gallery">
+      <div class="gallery-label">Photos & Diagrams</div>
+      <div class="gallery-grid count-3" id="gallery-consulting">
+        <div class="gallery-placeholder" data-gallery="consulting" data-index="0">
+          <div class="ph-icon">📷</div>
+          <div class="ph-type">Hardware Photo</div>
+          <div class="ph-hint">Test rig build or assembly</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="consulting" data-index="1">
+          <div class="ph-icon">📐</div>
+          <div class="ph-type">CAD / Schematic</div>
+          <div class="ph-hint">Test rig design drawing</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="consulting" data-index="2">
+          <div class="ph-icon">📊</div>
+          <div class="ph-type">Data / Graph</div>
+          <div class="ph-hint">Thermal conductivity results</div>
+        </div>
+      </div>
+      <div class="gallery-upload-hint">
+        💡 To add images, replace the placeholder <code>&lt;div&gt;</code> elements with <code>&lt;img src="your-file.jpg"&gt;</code> inside each <code>.gallery-item</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Internship -->
+  <div class="story-block reveal">
+    <div class="story-context">Aston Dynamics Canada · May 2024 – Sep 2025</div>
+    <h2>From breadboard to <em>200 km on the road</em></h2>
+    <div class="story-body">
+      <p>My internship started with a genuinely hard brief: design the company's first brake controller with GPS, Bluetooth, and CAN communication all on a single board. There was no prior design to iterate on — just a set of requirements and a blank schematic.</p>
+      <p>Through iterative prototyping, I landed on a design that reduced the PCB footprint by <strong>60%</strong> and improved power efficiency by <strong>23%</strong>. The board needed to handle <strong>30A continuous output</strong>, which meant thermal modelling wasn't optional — I validated that through E-load testing before the design went further. The result opened up two new product lines.</p>
+      <p>Alongside the hardware work, I ran a full <strong>DFMEA</strong> for a new product line — identifying 12 critical failure modes and building in mitigation strategies to achieve fail-safe operation. Then came field testing: <strong>200 km across multiple tow platforms</strong>, verifying electrical reliability and communication stability in conditions that don't show up on a bench.</p>
+      <p>I also took a pass at the bill of materials across several product lines and found <strong>12% in cost savings</strong> through consolidation and smarter part selection — without touching any performance specs.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">60%</span><span class="stat-item-label">PCB footprint reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">23%</span><span class="stat-item-label">Power efficiency gain</span></div>
+      <div class="stat-item"><span class="stat-item-num">12%</span><span class="stat-item-label">BOM cost reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">200km</span><span class="stat-item-label">Field testing</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">PCB Design</span>
+      <span class="chip">KiCad / EasyEDA</span>
+      <span class="chip">CAN Bus</span>
+      <span class="chip">GPS / Bluetooth</span>
+      <span class="chip">DFMEA</span>
+      <span class="chip">Field Testing</span>
+      <span class="chip">Thermal Analysis</span>
+    </div>
+
+    <!-- Gallery: Internship -->
+    <div class="gallery">
+      <div class="gallery-label">Photos & Diagrams</div>
+      <div class="gallery-grid count-4" id="gallery-internship">
+        <div class="gallery-placeholder" data-gallery="internship" data-index="0">
+          <div class="ph-icon">🔌</div>
+          <div class="ph-type">PCB Photo</div>
+          <div class="ph-hint">Brake controller board</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="internship" data-index="1">
+          <div class="ph-icon">📐</div>
+          <div class="ph-type">Schematic</div>
+          <div class="ph-hint">Board layout or schematic</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="internship" data-index="2">
+          <div class="ph-icon">📷</div>
+          <div class="ph-type">Field Testing</div>
+          <div class="ph-hint">Vehicle testing setup</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="internship" data-index="3">
+          <div class="ph-icon">📊</div>
+          <div class="ph-type">Thermal Data</div>
+          <div class="ph-hint">E-load test results</div>
+        </div>
+      </div>
+      <div class="gallery-upload-hint">
+        💡 To add images, replace the placeholder <code>&lt;div&gt;</code> elements with <code>&lt;img src="your-file.jpg"&gt;</code> inside each <code>.gallery-item</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECTS ═══ -->
+<div class="page" id="projects">
+  <div class="section-title reveal">Formula SAE Projects</div>
+
+  <!-- Vehicle Controls Lead -->
+  <div class="story-block reveal">
+    <div class="story-context">UofT Formula SAE (UTFR) · Vehicle Controls Lead · May 2025 – Present</div>
+    <h2>Rebuilding the car's <em>nervous system</em></h2>
+    <div class="story-body">
+      <p>As Vehicle Controls Lead, I inherited a steer-by-wire system that worked — but not well enough. The chain-driven architecture introduced backlash that undermined autonomous steering precision. The fix wasn't a tweak; it was a full redesign. I moved to <strong>direct actuator integration</strong> with a custom steering rack, eliminating the backlash at the source.</p>
+      <p>The pneumatic emergency braking system had a similar problem: it ran out of stored energy after just 3 brake maneuvers per charge. After rethinking the circuit layout, I redesigned the pneumatic architecture and got that number to <strong>34 maneuvers per charge</strong>.</p>
+      <p>On the modelling side, I extended the team's steady-state brake rotor thermal model into a <strong>transient Simulink simulation</strong> — showing how temperature and friction coefficient evolve during a competition run, validated to within <strong>5% of measured data</strong>. Across both subsystems, targeted design optimization delivered a <strong>2.5 kg mass reduction</strong>.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">34×</span><span class="stat-item-label">Brake maneuvers / charge</span></div>
+      <div class="stat-item"><span class="stat-item-num">5%</span><span class="stat-item-label">Thermal model error</span></div>
+      <div class="stat-item"><span class="stat-item-num">2.5kg</span><span class="stat-item-label">Mass reduction</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">Simulink</span>
+      <span class="chip">Transient Thermal Modelling</span>
+      <span class="chip">Pneumatic Systems</span>
+      <span class="chip">Steer-by-Wire</span>
+      <span class="chip">SolidWorks</span>
+    </div>
+
+    <!-- Gallery: Vehicle Controls -->
+    <div class="gallery">
+      <div class="gallery-label">Photos & Diagrams</div>
+      <div class="gallery-grid count-4" id="gallery-controls">
+        <div class="gallery-placeholder" data-gallery="controls" data-index="0">
+          <div class="ph-icon">🚗</div>
+          <div class="ph-type">Hardware Photo</div>
+          <div class="ph-hint">Steering rack or actuator</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="controls" data-index="1">
+          <div class="ph-icon">📐</div>
+          <div class="ph-type">CAD Render</div>
+          <div class="ph-hint">Steer-by-wire assembly</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="controls" data-index="2">
+          <div class="ph-icon">📊</div>
+          <div class="ph-type">Simulink Model</div>
+          <div class="ph-hint">Transient thermal simulation</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="controls" data-index="3">
+          <div class="ph-icon">🔧</div>
+          <div class="ph-type">Pneumatic Diagram</div>
+          <div class="ph-hint">Brake circuit layout</div>
+        </div>
+      </div>
+      <div class="gallery-upload-hint">
+        💡 To add images, replace the placeholder <code>&lt;div&gt;</code> elements with <code>&lt;img src="your-file.jpg"&gt;</code> inside each <code>.gallery-item</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brakes Lead -->
+  <div class="story-block reveal">
+    <div class="story-context">UofT Formula SAE (UTFR) · Brakes Lead · May 2023 – May 2024</div>
+    <h2>Building the team's first <em>autonomous brake system</em> from zero</h2>
+    <div class="story-body">
+      <p>When I joined UTFR as Brakes Lead, the team didn't have a working autonomous emergency brake system. Driverless competition categories were coming, and without one, we couldn't run. So we built it.</p>
+      <p>The first functional prototype achieved a <strong>38% performance improvement</strong> over earlier benchtop attempts. Getting there required measuring brake system compliance — volumetric expansion of brake lines under pressure — which informed material choices that reduced system compliance by <strong>44%</strong>.</p>
+      <p>I built a steady-state thermal model, ran coupled structural-thermal FEA in ANSYS, and validated predictions to within <strong>9% of measured data</strong>.</p>
+      <div class="callout">Leading a team of 8 to build something genuinely new — and watching it work on an actual car — was one of the most satisfying engineering experiences I've had.</div>
+      <p>That year, the team finished <strong>1st at the Formula Hybrid+Electric competition</strong> and was selected for the Design Finals event at FSAE Michigan.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">38%</span><span class="stat-item-label">Performance vs prototype</span></div>
+      <div class="stat-item"><span class="stat-item-num">44%</span><span class="stat-item-label">Compliance reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">&lt;9%</span><span class="stat-item-label">Thermal model error</span></div>
+      <div class="stat-item"><span class="stat-item-num">1st</span><span class="stat-item-label">FH+E Competition</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">ANSYS FEA</span>
+      <span class="chip">Thermal Modelling</span>
+      <span class="chip">Brake System Design</span>
+      <span class="chip">SolidWorks</span>
+      <span class="chip">Team Leadership</span>
+      <span class="chip">MATLAB</span>
+    </div>
+
+    <!-- Gallery: Brakes -->
+    <div class="gallery">
+      <div class="gallery-label">Photos & Diagrams</div>
+      <div class="gallery-grid count-5" id="gallery-brakes">
+        <div class="gallery-placeholder" data-gallery="brakes" data-index="0">
+          <div class="ph-icon">🏎️</div>
+          <div class="ph-type">Car Photo</div>
+          <div class="ph-hint">Vehicle or competition shot</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="brakes" data-index="1">
+          <div class="ph-icon">📷</div>
+          <div class="ph-type">Hardware Photo</div>
+          <div class="ph-hint">Brake system assembly</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="brakes" data-index="2">
+          <div class="ph-icon">📐</div>
+          <div class="ph-type">CAD Model</div>
+          <div class="ph-hint">Brake caliper or rotor design</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="brakes" data-index="3">
+          <div class="ph-icon">🌡️</div>
+          <div class="ph-type">FEA Result</div>
+          <div class="ph-hint">Thermal stress plot from ANSYS</div>
+        </div>
+        <div class="gallery-placeholder" data-gallery="brakes" data-index="4">
+          <div class="ph-icon">📊</div>
+          <div class="ph-type">Data Plot</div>
+          <div class="ph-hint">Measured vs predicted temps</div>
+        </div>
+      </div>
+      <div class="gallery-upload-hint">
+        💡 To add images, replace the placeholder <code>&lt;div&gt;</code> elements with <code>&lt;img src="your-file.jpg"&gt;</code> inside each <code>.gallery-item</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SKILLS ═══ -->
+<div class="page" id="skills">
+  <div class="section-title reveal">Skills</div>
+  <div class="skills-section reveal">
+    <div class="skills-grid">
+      <div class="skill-col">
+        <h3>Software & Programming</h3>
+        <ul>
+          <li>MATLAB <span>Modelling & analysis</span></li>
+          <li>Simulink <span>Dynamic systems</span></li>
+          <li>Python <span>Scripting & data</span></li>
+          <li>C++ <span>Embedded systems</span></li>
+          <li>LaTeX / Typst <span>Technical writing</span></li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>CAD & Simulation</h3>
+        <ul>
+          <li>SolidWorks <span>CSWA certified</span></li>
+          <li>Onshape <span>Collaborative CAD</span></li>
+          <li>ANSYS Workbench <span>FEA</span></li>
+          <li>Structural-Thermal FEA <span>Coupled analysis</span></li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Electronics & PCB</h3>
+        <ul>
+          <li>KiCad / EasyEDA <span>PCB layout</span></li>
+          <li>CAN Bus <span>Automotive comms</span></li>
+          <li>GPS / Bluetooth <span>Wireless integration</span></li>
+          <li>E-Load & thermal testing <span>Validation</span></li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Engineering Methods</h3>
+        <ul>
+          <li>DFMEA <span>Risk analysis</span></li>
+          <li>Thermal modelling <span>Steady-state & transient</span></li>
+          <li>Validation planning <span>Test strategy</span></li>
+          <li>BOM optimization <span>Cost reduction</span></li>
+          <li>DFM & design reviews <span>Manufacturability</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<div class="page" id="about">
+  <hr class="divider">
+  <div class="about-section reveal">
+    <h2>A bit <em>about me</em></h2>
+    <div class="about-text">
+      <p>I'm in my final year of a <strong>BASc in Mechanical Engineering at the University of Toronto</strong>, with a minor in Mechatronics, graduating May 2026. My academic work spans thermodynamics, dynamics, controls, and manufacturing — but I've always learned best by building real things and testing them against reality.</p>
+      <p>I gravitate toward problems that sit at the edges of disciplines — where the mechanical, electrical, and software concerns all intersect and you can't solve one without understanding the others.</p>
+      <p>Outside of engineering, I have a soft spot for classical literature — particularly Homer, Sophocles, and Euripides. There's something in how those texts think about character and consequence that I find surprisingly applicable to how I approach technical decisions.</p>
+    </div>
+    <div class="about-facts">
+      <div class="about-fact">
+        <div class="about-fact-label">Degree</div>
+        <div class="about-fact-val">BASc Mechanical Eng.<br>Minor in Mechatronics</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-label">University</div>
+        <div class="about-fact-val">University of Toronto<br>Graduating May 2026</div>
+      </div>
+      <div class="about-fact">
+        <div class="about-fact-label">Location</div>
+        <div class="about-fact-val">Toronto, ON</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<div class="page" id="contact">
+  <hr class="divider">
+  <div class="contact-section reveal">
+    <h2>Let's <em>talk.</em></h2>
+    <p>I'm always up for interesting conversations — whether that's a job, a project, a hard problem you're thinking through, or just a chat about engineering. Drop me a line.</p>
+    <div class="contact-list">
+      <a href="mailto:mo.taban@mail.utoronto.ca" class="contact-row">
+        <span class="contact-row-label">Email</span>
+        <span class="contact-row-val">mo.taban@mail.utoronto.ca</span>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="https://linkedin.com/in/motaban" target="_blank" class="contact-row">
+        <span class="contact-row-label">LinkedIn</span>
+        <span class="contact-row-val">linkedin.com/in/motaban</span>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="tel:9029996330" class="contact-row">
+        <span class="contact-row-label">Phone</span>
+        <span class="contact-row-val">902-999-6330</span>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="#" class="contact-row">
+        <span class="contact-row-label">Resume</span>
+        <span class="contact-row-val">Download PDF</span>
+        <span class="contact-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Mo Taban</span>
+  <span>BASc Mechanical Engineering · University of Toronto</span>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lb-close">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lb-prev">‹</button>
+    <img class="lightbox-img" id="lb-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lb-next">›</button>
+    <div class="lightbox-caption" id="lb-caption"></div>
+  </div>
+</div>
+
+<script>
+  // ── Scroll reveal ──
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── Lightbox ──
+  // Collect all real images per gallery
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  let lbImages = []; // [{src, caption}]
+  let lbIndex = 0;
+
+  function openLightbox(images, index) {
+    lbImages = images;
+    lbIndex = index;
+    showLbImage();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showLbImage() {
+    const item = lbImages[lbIndex];
+    lbImg.src = item.src;
+    lbImg.alt = item.caption;
+    lbCaption.textContent = item.caption;
+    document.getElementById('lb-prev').style.opacity = lbImages.length > 1 ? '1' : '0';
+    document.getElementById('lb-next').style.opacity = lbImages.length > 1 ? '1' : '0';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  document.getElementById('lb-prev').addEventListener('click', e => {
+    e.stopPropagation();
+    lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+    showLbImage();
+  });
+  document.getElementById('lb-next').addEventListener('click', e => {
+    e.stopPropagation();
+    lbIndex = (lbIndex + 1) % lbImages.length;
+    showLbImage();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; showLbImage(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; showLbImage(); }
+  });
+
+  // Wire up real gallery images (populated once you add <img> tags)
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    const galleryEl = img.closest('[id^="gallery-"]');
+    img.parentElement.addEventListener('click', () => {
+      const galleryImgs = Array.from(galleryEl.querySelectorAll('.gallery-item img'))
+        .map(i => ({ src: i.src, caption: i.dataset.caption || i.alt || '' }));
+      const idx = galleryImgs.findIndex(g => g.src === img.src);
+      openLightbox(galleryImgs, idx);
+    });
+  });
+</script>
+</body>
 </html>
