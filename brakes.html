@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mo Taban — Brakes Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><a href="index.html">Mo Taban</a></div>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="page page-detail">
+  <div class="page-back"><a href="index.html#projects">← Projects</a></div>
+
+  <div class="story-block">
+    <div class="story-context">UofT Formula SAE (UTFR) · Brakes Lead · May 2023 – May 2024</div>
+    <h2>Building the team's first <em>autonomous brake system</em> from zero</h2>
+    <div class="story-body">
+      <p>When I joined UTFR as Brakes Lead, the team didn't have a working autonomous emergency brake system. Driverless competition categories were coming, and without one, we couldn't run. So we built it.</p>
+      <p>The first functional prototype achieved a <strong>38% performance improvement</strong> over earlier benchtop attempts. Getting there required actually measuring brake system compliance by pressurizing lines and recording volumetric expansion. That data informed material selection and brought system compliance down by <strong>44%</strong>.</p>
+      <p>I built a steady-state thermal model, ran coupled structural-thermal FEA in ANSYS to check for thermal stress, and validated predictions to within <strong>9% of measured data</strong>. At steady state the rotor cycles between 320 and 400°C. Structurally it holds a minimum safety factor of 3.33.</p>
+      <div class="callout">Leading a team of 8 to build something genuinely new, and watching it work on an actual car, was one of the most satisfying engineering experiences I've had.</div>
+      <p>That year, the team finished <strong>1st at Formula Hybrid+Electric</strong> and was selected for the Design Finals at FSAE Michigan. The six designs below cover the component-level work from that year.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">38%</span><span class="stat-item-label">Performance vs prototype</span></div>
+      <div class="stat-item"><span class="stat-item-num">44%</span><span class="stat-item-label">Compliance reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">&lt;9%</span><span class="stat-item-label">Thermal model error</span></div>
+      <div class="stat-item"><span class="stat-item-num">1st</span><span class="stat-item-label">FH+E Competition</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">ANSYS FEA</span>
+      <span class="chip">Thermal Modelling</span>
+      <span class="chip">Brake System Design</span>
+      <span class="chip">Pneumatic Systems</span>
+      <span class="chip">SolidWorks</span>
+      <span class="chip">Python</span>
+      <span class="chip">MATLAB</span>
+      <span class="chip">Team Leadership</span>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-label">Overview</div>
+      <div class="gallery-grid count-3" id="gallery-brakes">
+        <div class="gallery-item">
+          <img src="img/ASB in car.png" alt="ASB V1 mounted in the 2023 car" data-caption="ASB V1 mounted in the 2023 car's chassis. Brake rotor visible at right.">
+          <div class="gallery-item-overlay"><div class="gallery-item-caption">ASB V1 in the car</div></div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/Rotor Temps.jpg" alt="Rotor thermal simulation" data-caption="ANSYS thermal simulation. Heat concentrates in the pad contact zone (red/orange), with a steep radial gradient toward the cooler mounting area.">
+          <div class="gallery-item-overlay"><div class="gallery-item-caption">Rotor thermal FEA</div></div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/Pedal Tray Full.JPG" alt="Full pedal assembly" data-caption="Brake pedal (left, gray) and throttle pedal (right, blue) on custom rails, on the carbon fiber floor panel.">
+          <div class="gallery-item-overlay"><div class="gallery-item-caption">Full pedal assembly</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-list">
+      <div class="design-list-heading">Component designs</div>
+
+      <div class="design-item">
+        <h4>Hydraulic-over-pneumatic EBS piston</h4>
+        <div class="design-body">
+          The challenge with a pneumatic emergency brake is getting enough line pressure out of a small stored air supply. This design uses a differential piston: a large pneumatic bore drives a smaller hydraulic bore, multiplying the force. When the solenoid valves open on power loss, compressed air drives the piston and pushes fluid into the brake lines. Bore sizes were calculated from the required line pressure and master cylinder displacement. O-rings were spec'd to Parker guidelines. It delivers <strong>50% more braking force</strong> from the same air supply as the previous generation.
+        </div>
+        <div class="gallery-grid count-1" id="gallery-ebs">
+          <div class="gallery-item">
+            <img src="img/EBS Piston.png" alt="EBS piston sectional view" data-caption="Hydraulic-over-pneumatic EBS piston. Return spring (top), piston rod (center), pneumatic input port (base). Transparent housing shows the internal mechanism.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Sectional render</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-item">
+        <h4>Autonomous System Brake V1</h4>
+        <div class="design-body">
+          The ASB V1 was the team's first brake-by-wire prototype, co-designed with the previous Brakes Lead. The intent was to get something on the car quickly for driverless testing without modifying the existing manual brake circuit. A linear actuator drives the master cylinder; a pneumatic cylinder provides emergency backup. The whole thing mounts as a bolt-on unit with quick-disconnect fittings. It was never formally run in competition, but a lot of what we figured out building it carried forward into the current system.
+        </div>
+        <div class="gallery-grid count-2" id="gallery-asb">
+          <div class="gallery-item">
+            <img src="img/ASB Top.png" alt="ASB V1 top view" data-caption="ASB V1, top view. Linear actuator and master cylinder (left center), pneumatic backup cylinder (upper), control electronics (bottom right).">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Top view</div></div>
+          </div>
+          <div class="gallery-item">
+            <img src="img/ASB ISO.png" alt="ASB V1 isometric view" data-caption="ASB V1, isometric view. All plumbing, actuation, and electronics on a single bolt-on mounting plate.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Isometric view</div></div>
+          </div>
+          <div class="gallery-item" style="display:none">
+            <img src="img/ASB in car.png" alt="ASB V1 mounted in car" data-caption="ASB V1 mounted in the 2023 car's chassis frame. Brake rotor visible at right.">
+          </div>
+        </div>
+      </div>
+
+      <div class="design-item">
+        <h4>Brake rotor thermal and structural analysis</h4>
+        <div class="design-body">
+          Heat flux and convection coefficients came from first-principles calculations, which fed into an ANSYS thermal simulation. Those thermal results then fed into a structural simulation to check for stress from thermal expansion. At steady state the rotor cycles between 320 and 400°C after about 50 hard stops from 70 km/h at 1.4g. Structurally, the minimum safety factor is <strong>3.33</strong>, with stress concentrations at the inner geometry transitions where the mounting cutouts create sharp corners. Thermal predictions came within <strong>9%</strong> of thermocouple data on the car.
+        </div>
+        <div class="gallery-grid count-2" id="gallery-rotor">
+          <div class="gallery-item">
+            <img src="img/Rotor Temps.jpg" alt="Rotor thermal simulation" data-caption="ANSYS thermal simulation. Heat concentrates in the pad contact zone (outer friction band). Steep radial gradient from red/orange at the surface to blue at the mounting area.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Thermal simulation</div></div>
+          </div>
+          <div class="gallery-item">
+            <img src="img/Rotor Safety Factor.jpg" alt="Rotor safety factor" data-caption="Structural FEA safety factor. Nearly the entire rotor is deep blue (well above limit). Small green zones at the inner cutout transitions mark the minimum SF of 3.33.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Safety factor</div></div>
+          </div>
+          <div class="gallery-item" style="display:none">
+            <img src="img/Peak Rotor Temperature.PNG" alt="Max rotor temperature vs stop count" data-caption="Max rotor temperature vs stop count at 1.4g from 70 km/h. Stabilizes to a 320-400°C sawtooth cycle after roughly 50 stops.">
+          </div>
+        </div>
+      </div>
+
+      <div class="design-item">
+        <h4>Adjustable pedal tray and rail</h4>
+        <div class="design-body">
+          Adjustable pedals are a requirement since drivers vary a lot in size. The OEM rail system had too much compliance, and it was showing up in the brake pedal feel. The fix was a fully custom tray and rail machined to tighter tolerances. The ANSYS deformation result shows the load path clearly: the custom rail stays essentially rigid, and the deformation concentrates at the central brackets directly under the load. Under maximum brake load, the new design deflects <strong>37% less</strong> than the prior setup.
+        </div>
+        <div class="gallery-grid count-2" id="gallery-tray">
+          <div class="gallery-item">
+            <img src="img/Pedal Tray Rendering.JPG" alt="Pedal tray CAD render" data-caption="Brake pedal tray with custom integrated rail. Twin-slot channel allows fore-aft adjustment. Four rounded mounting tabs and sensor boss above.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">CAD render</div></div>
+          </div>
+          <div class="gallery-item">
+            <img src="img/Pedal Tray Deformation.jpg" alt="Pedal tray deformation FEA" data-caption="ANSYS deformation under max brake load. Rail stays rigid (blue). Deformation concentrates at the central mounting tabs (red) where the pedal force applies.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Deformation FEA</div></div>
+          </div>
+          <div class="gallery-item" style="display:none">
+            <img src="img/Pedal Tray Full.JPG" alt="Full pedal assembly" data-caption="Brake pedal (left, gray) and throttle pedal (right, blue) both on custom rails, on the carbon fiber floor panel.">
+          </div>
+        </div>
+      </div>
+
+      <div class="design-item">
+        <h4>Throttle pedal redesign</h4>
+        <div class="design-body">
+          Driver comfort was the starting point. The previous throttle pedal sat too steep, putting the driver's foot in an uncomfortable position. Lowering the pedal angle meant rethinking the return spring, since the geometry no longer worked for a torsion spring. The replacement is a compression spring on a guided rod with heim joints at each end. That change also required swapping the linear position sensor for a rotary potentiometer at the pivot, since the pedal motion is purely rotational about that axis.
+        </div>
+        <div class="gallery-grid count-2" id="gallery-throttle">
+          <div class="gallery-item">
+            <img src="img/Throttle Pedal.PNG" alt="Throttle pedal assembly" data-caption="Throttle pedal with the new spring arrangement. Blue anodized arm at a shallower angle than the prior design. Rotary potentiometer at the pivot axis.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Pedal assembly</div></div>
+          </div>
+          <div class="gallery-item">
+            <img src="img/Throttle Spring.JPG" alt="Compression spring assembly" data-caption="Compression spring over guide rod with heim joints at each end. Replaces the torsion spring from the previous design.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Spring assembly</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-item">
+        <h4>Brake pressure and deceleration model</h4>
+        <div class="design-body">
+          The question was: for any combination of front and rear brake line pressures, what deceleration does the car achieve? The Python program sweeps a grid of pressure values and computes the result for each one using a model of the car's brake geometry, wheel loads, and tire behavior. Any combination where the model assumptions break down gets filtered out. MATLAB renders the valid space as a 3D surface. The wedge shape tells you something real: deceleration scales with both pressures, but the valid region is bounded by wheel lockup on each axle, and the front bias is steeper than most people would guess.
+        </div>
+        <div class="gallery-grid count-1" id="gallery-matlab">
+          <div class="gallery-item">
+            <img src="img/Brake Matlab.png" alt="Brake pressure deceleration surface" data-caption="3D surface: deceleration vs front and rear brake line pressure. The wedge shape reflects the valid operating envelope bounded by wheel lockup constraints on each axle.">
+            <div class="gallery-item-overlay"><div class="gallery-item-caption">Pressure vs deceleration surface</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Mo Taban</span>
+  <span>BASc Mechanical Engineering · University of Toronto</span>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lb-close">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lb-prev">‹</button>
+    <img class="lightbox-img" id="lb-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lb-next">›</button>
+    <div class="lightbox-caption" id="lb-caption"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

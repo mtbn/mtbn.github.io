@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mo Taban — Vehicle Controls Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><a href="index.html">Mo Taban</a></div>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="page page-detail">
+  <div class="page-back"><a href="index.html#projects">← Projects</a></div>
+
+  <div class="story-block">
+    <div class="story-context">UofT Formula SAE (UTFR) · Vehicle Controls Lead · May 2025 – Present</div>
+    <h2>Rebuilding the car's <em>nervous system</em></h2>
+    <div class="story-body">
+      <p>As Vehicle Controls Lead, I inherited a steer-by-wire system that worked, but not well enough. The chain-driven architecture introduced backlash that undermined autonomous steering precision. The fix wasn't a tweak; it was a full redesign. I moved to <strong>direct actuator integration</strong> with a custom steering rack, eliminating the backlash at the source.</p>
+      <p>The pneumatic emergency braking system had a similar problem: it ran out of stored energy after just 3 brake maneuvers per charge. After rethinking the circuit layout, I redesigned the pneumatic architecture and got that number to <strong>34 maneuvers per charge</strong>.</p>
+      <p>On the modelling side, I extended the team's steady-state brake rotor thermal model into a <strong>transient Simulink simulation</strong> that shows how temperature and friction coefficient evolve during a competition run, validated to within <strong>5% of measured data</strong>. Across both subsystems, targeted design optimization delivered a <strong>2.5 kg mass reduction</strong>.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">34×</span><span class="stat-item-label">Brake maneuvers / charge</span></div>
+      <div class="stat-item"><span class="stat-item-num">5%</span><span class="stat-item-label">Thermal model error</span></div>
+      <div class="stat-item"><span class="stat-item-num">2.5kg</span><span class="stat-item-label">Mass reduction</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">Simulink</span>
+      <span class="chip">Transient Thermal Modelling</span>
+      <span class="chip">Pneumatic Systems</span>
+      <span class="chip">Steer-by-Wire</span>
+      <span class="chip">SolidWorks</span>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-label">Photos & Diagrams</div>
+      <div class="gallery-grid count-4" id="gallery-controls">
+        <div class="gallery-placeholder">
+          <div class="ph-icon">🚗</div>
+          <div class="ph-type">Hardware Photo</div>
+          <div class="ph-hint">Steering rack or actuator</div>
+        </div>
+        <div class="gallery-placeholder">
+          <div class="ph-icon">📐</div>
+          <div class="ph-type">CAD Render</div>
+          <div class="ph-hint">Steer-by-wire assembly</div>
+        </div>
+        <div class="gallery-placeholder">
+          <div class="ph-icon">📊</div>
+          <div class="ph-type">Simulink Model</div>
+          <div class="ph-hint">Transient thermal simulation</div>
+        </div>
+        <div class="gallery-placeholder">
+          <div class="ph-icon">🔧</div>
+          <div class="ph-type">Pneumatic Diagram</div>
+          <div class="ph-hint">Brake circuit layout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Mo Taban</span>
+  <span>BASc Mechanical Engineering · University of Toronto</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

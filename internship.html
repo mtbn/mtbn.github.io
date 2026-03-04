@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mo Taban — Testing & Development Intern</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-name"><a href="index.html">Mo Taban</a></div>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="page page-detail">
+  <div class="page-back"><a href="index.html#work">← Work</a></div>
+
+  <div class="story-block">
+    <div class="story-context">Aston Dynamics Canada · May 2024 – Sep 2025</div>
+    <h2>From breadboard to <em>200 km on the road</em></h2>
+    <div class="story-body">
+      <p>My internship started with a genuinely hard brief: design the company's first brake controller with GPS, Bluetooth, and CAN communication all on a single board. There was no prior design to iterate on. Just a set of requirements and a blank schematic.</p>
+      <p>Through iterative prototyping, I landed on a design that reduced the PCB footprint by <strong>60%</strong> and improved power efficiency by <strong>23%</strong>. The board needed to handle <strong>30A continuous output</strong>, which meant thermal modelling wasn't optional. I validated that through E-load testing before the design went further. The result opened up two new product lines.</p>
+      <p>Alongside the hardware work, I ran a full <strong>DFMEA</strong> for a new product line, identifying 12 critical failure modes and building in mitigation strategies to achieve fail-safe operation. Then came field testing: <strong>200 km across multiple tow platforms</strong>, verifying electrical reliability and communication stability in conditions that don't show up on a bench.</p>
+      <p>I also took a pass at the bill of materials across several product lines and found <strong>12% in cost savings</strong> through consolidation and smarter part selection, without touching any performance specs.</p>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-item-num">60%</span><span class="stat-item-label">PCB footprint reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">23%</span><span class="stat-item-label">Power efficiency gain</span></div>
+      <div class="stat-item"><span class="stat-item-num">12%</span><span class="stat-item-label">BOM cost reduction</span></div>
+      <div class="stat-item"><span class="stat-item-num">200km</span><span class="stat-item-label">Field testing</span></div>
+    </div>
+    <div class="tech-chips">
+      <span class="chip">PCB Design</span>
+      <span class="chip">KiCad / EasyEDA</span>
+      <span class="chip">CAN Bus</span>
+      <span class="chip">GPS / Bluetooth</span>
+      <span class="chip">DFMEA</span>
+      <span class="chip">Field Testing</span>
+      <span class="chip">Thermal Analysis</span>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-label">Photos & Diagrams</div>
+      <div class="gallery-grid count-4" id="gallery-internship">
+        <div class="gallery-placeholder">
+          <div class="ph-icon">🔌</div>
+          <div class="ph-type">PCB Photo</div>
+          <div class="ph-hint">Brake controller board</div>
+        </div>
+        <div class="gallery-placeholder">
+          <div class="ph-icon">📐</div>
+          <div class="ph-type">Schematic</div>
+          <div class="ph-hint">Board layout or schematic</div>
+        </div>
+        <div class="gallery-placeholder">
+          <div class="ph-icon">📷</div>
+          <div class="ph-type">Field Testing</div>
+          <div class="ph-hint">Vehicle testing setup</div>
+        </div>
+        <div class="gallery-placeholder">
+          <div class="ph-icon">📊</div>
+          <div class="ph-type">Thermal Data</div>
+          <div class="ph-hint">E-load test results</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Mo Taban</span>
+  <span>BASc Mechanical Engineering · University of Toronto</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
